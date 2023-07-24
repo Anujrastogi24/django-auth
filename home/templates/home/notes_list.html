@@ -1,0 +1,149 @@
+{% if request.user.is_authenticated %}
+
+<html>
+<head>
+    <title>My Website</title>
+    <style>
+        /* Add some basic styling to the navbar */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        /* Style for the left and right sections of the navbar */
+        .navbar-left {
+            /* Add any styles you want for the left side */
+        }
+
+        .navbar-right {
+            /* Add any styles you want for the right side */
+        }
+
+        /* Style for the logout link */
+        .logout-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        .logout-link:hover {
+            background-color: #555;
+        }
+          /* Basic styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Responsive styling */
+        @media screen and (max-width: 600px) {
+            th, td {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        /* Style the "Add New" link */
+        .add-new-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+
+        .add-new-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <!-- Title -->
+            <h1>My Notes</h1>
+        </div>
+        <div class="navbar-right">
+            <!-- Username -->
+            <span>Welcome, {{ request.user }}</span>
+            <!-- Logout link -->
+            <a href="{% url 'logout' %}" class="logout-link">Logout</a>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <th>List</th>
+            <td><a class="add-new-link" href="{% url 'create' %}">ADD New</a></td>
+        </tr>
+        {% for list in notes %}
+        <tr>
+            <td>{{ list.title }}</td>
+
+            <td><a href="{% url 'view' list.id %}">View</a></td>
+            <td><a href="{% url 'update' list.id %}">Update</a></td>
+            <td><a href="{% url 'delete' list.id %}">Delete</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">
+                <h3>No notes in the list</h3>
+                <a class="add-new-link" href="{% url 'create' %}">Add New Note</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+
+<!--   <div style="background-color: #333; color: #fff; display: flex; justify-content: space-between; padding: 10px;">-->
+<!--        <div style="font-size: 24px; font-weight: bold;">-->
+<!--            &lt;!&ndash; Title &ndash;&gt;-->
+<!--           My Notes-->
+<!--        </div>-->
+<!--        <div>-->
+<!--               <span style="margin-right: 10px;">Welcome, {{request.user}}</span>-->
+<!--            <a href="{% url 'login' %}" style="color: #fff; text-decoration: none; padding: 5px 10px; background-color: #555;">Logout</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <table>-->
+<!--  <tr>-->
+<!--    <th>List</th>-->
+<!--    <td><a href="{% url 'create'%}">ADD New</a> </td>-->
+<!--  </tr>-->
+<!--  {% for list in notes %}-->
+<!--  <tr>-->
+<!--    <td>{{list.title}}</td>-->
+<!--    <td><a href="{% url 'update' list.id %}">Update</a> </td>-->
+<!--    <td><a href="{% url 'delete' list.id %}">Delete</a> </td>-->
+
+<!--  </tr>-->
+<!--  {% empty %}-->
+<!--  <h3>No notes in list</h3>-->
+<!--  <a href=""> Add New Note</a>-->
+<!--  {% endfor %}-->
+<!--</table>-->
+
+{% else %}
+<a href="{% url 'login' %}">Log In</a>
+
+{% endif %}
+
+
+

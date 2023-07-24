@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .form-signin .checkbox {
+            font-weight: 400;
+        }
+
+        .form-signin .form-floating:focus-within {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
+
+
+</head>
+
+<body class="text-center">
+x
+    <main class="form-signin">
+        <form method="POST">
+            {% csrf_token %}
+<!--    <label for="id_username">Username:</label>-->
+<!--    <input type="text" name="username" value="Harry" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required id="id_username">-->
+
+<!--    <label for="id_password1">Password:</label>-->
+<!--    <input type="password" name="password1" autocomplete="new-password" required id="id_password1">-->
+
+
+<!--    <label for="id_password2">Password confirmation:</label>-->
+<!--    <input type="password" name="password2" autocomplete="new-password" required id="id_password2">-->
+
+            <img class="mb-4" src="https://icon-library.com/images/new-account-icon/new-account-icon-11.jpg" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
+
+            <div class="form-floating">
+
+                <input type="text" class="form-control" name="username" required id="floatingInput id_username" placeholder="admin">
+                <label for="floatingInput id_username">Username</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" name="password1" required id="floatingPassword id_password1"
+                    placeholder="Password">
+                <label for="floatingPassword id_password1">Password</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" name="password2" id="floatingPassword id_password2"
+                    placeholder="Confirm Password">
+                <label for="floatingPassword id_password2">Confirm Password</label>
+            </div>
+            <input class="w-100 btn btn-lg btn-primary" type="submit">Sign up</input>
+
+        </form>
+    </main>
+</body>
+
+</html>
